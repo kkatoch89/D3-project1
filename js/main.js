@@ -89,6 +89,27 @@ xAxisGroup
 const yAxisCall = d3.axisLeft(y).ticks(10);
 yAxisGroup.call(yAxisCall);
 
+// Legend Labels
+const legend = g.append('g');
+
+continents.forEach((continent, i) => {
+	const legendRow = legend
+		.append('g')
+		.attr('transform', `translate(${i * 20}, 0)`);
+
+	legendRow
+		.append('text')
+		.attr('x', `${WIDTH / (6 / i) + 100}`)
+		.attr('transform', function (d, i) {
+			return `translate( ${
+				((i % 4) * WIDTH) / 6
+			}  ,  ${Math.floor(i / 4) * 20})`;
+		})
+		.text(continent.charAt(0).toUpperCase() + continent.slice(1))
+		.attr('text-anchor', 'middle')
+		.attr('fill', continentColor(continent));
+});
+
 let counter = 0;
 let restart = false;
 
@@ -143,26 +164,4 @@ function update(data) {
 
 	// update time label
 	timeLabel.text(String(data.year));
-
-	// Legend Labels
-	g.selectAll('myLabels')
-		.data(continents)
-		.enter()
-		.append('text')
-		.attr('x', `${WIDTH / 6}`)
-		.attr('transform', function (d, i) {
-			return `translate( ${
-				((i % 4) * WIDTH) / 6
-			}  ,  ${Math.floor(i / 4) * 20})`;
-		})
-		.text(function (d) {
-			return d.charAt(0).toUpperCase() + d.slice(1);
-		})
-		.attr('text-anchor', 'middle')
-		.attr('fill', (d) => continentColor(d));
 }
-
-// $('#restart-btn').click(function () {
-// 	restart = !restart;
-// 	console.log(restart);
-// });
