@@ -1,5 +1,5 @@
 # D3-project1
-My first foray into D3.js library! Recreating the beauty of a dynamic chart found on - https://www.youtube.com/watch?v=jbkSRLYSojo&amp;t=2s
+My first foray into D3.js library! Recreating the beauty of a dynamic chart found on - https://www.gapminder.org/fw/world-health-chart/
 
 Dynamic chart showing countries' population, life expectancy and income per capita from 1800 to 2014
 
