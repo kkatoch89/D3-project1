@@ -17,19 +17,27 @@
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
-		<!-- Bootstrap grid setup -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<button id="play-button" class="btn btn-primary">Play</button>
-					<button id="reset-button" class="btn btn-primary">Reset</button>
+		<header>
+			<h1>First Data Visualization Project</h1>
+			<h2>Karan Katoch</h2>
+		</header>
+		<main>
+			<div class="container">
+				<div class="row">
+					<!-- <div class="col-md-12 box btn-box">
+						<button id="play-button" class="btn btn-dark">Play</button>
+						<button id="reset-button" class="btn btn-dark">Reset</button>
+					</div> -->
+					<div class="visualization-box">
+						<div class="btn-box">
+							<button id="play-button" class="btn btn-dark">Play</button>
+							<button id="reset-button" class="btn btn-dark">Reset</button>
+						</div>
+						<div id="chart-area"></div>
+					</div>
 				</div>
 			</div>
-
-			<div class="row">
-				<div id="chart-area"></div>
-			</div>
-		</div>
+		</main>
 		<!-- External JS libraries -->
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 		<script

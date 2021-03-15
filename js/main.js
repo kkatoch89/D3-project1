@@ -110,10 +110,7 @@ continents.forEach((continent, i) => {
 		.attr('fill', continentColor(continent));
 });
 
-let counter = 0;
-let restart = false;
-
-// Tooltip
+// tooltip
 const tip = d3
 	.tip()
 	.attr('class', 'd3-tip')
@@ -124,8 +121,43 @@ const tip = d3
 	});
 g.call(tip);
 
+let counter = 0;
+let interval;
+let formattedData;
+
+// button event listeners
+$('#play-button').on('click', function () {
+	console.log(typeof $(this).text());
+	if ($(this).text() === 'Play' && counter < 214) {
+		interval = setInterval(function () {
+			counter < 214
+				? update(formattedData[++counter])
+				: $('#play-button').text('Play');
+		}, 100);
+		$(this).text('Pause');
+	} else if ($(this).text() === 'Play' && counter >= 214) {
+		counter = 0;
+		interval = setInterval(function () {
+			counter < 214
+				? update(formattedData[++counter])
+				: $('#play-button').text('Play');
+		}, 100);
+		$(this).text('Pause');
+	} else {
+		clearInterval(interval);
+		$(this).text('Play');
+	}
+});
+
+$('#reset-button').on('click', () => {
+	$('#play-button').text('Play');
+	clearInterval(interval);
+	counter = 0;
+	update(formattedData[counter]);
+});
+
 d3.json('data/data.json').then((data) => {
-	const formattedData = data.map((period) => {
+	formattedData = data.map((period) => {
 		return {
 			year: period['year'],
 			countries: period['countries']
@@ -141,12 +173,16 @@ d3.json('data/data.json').then((data) => {
 				}),
 		};
 	});
-	console.log(formattedData);
 
-	const interval = d3.interval(function () {
-		counter = counter < 214 ? counter + 1 : 0;
-		update(formattedData[counter]);
-	}, 100);
+	// const interval = d3.interval(function () {
+	// 	counter = counter < 214 ? counter + 1 : 0;
+	// 	update(formattedData[counter]);
+	// }, 100);
+
+	// interval = setInterval(function () {
+	// 	counter = counter < 214 ? counter + 1 : 0;
+	// 	update(formattedData[counter]);
+	// }, 100);
 
 	update(formattedData[0]);
 });
