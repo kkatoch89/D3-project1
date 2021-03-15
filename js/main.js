@@ -113,6 +113,17 @@ continents.forEach((continent, i) => {
 let counter = 0;
 let restart = false;
 
+// Tooltip
+const tip = d3
+	.tip()
+	.attr('class', 'd3-tip')
+	.html((d) => {
+		const contColor = continentColor(d.continent);
+		let text = `<span style= color:${contColor}>Country: </span>${d.country}`;
+		return text;
+	});
+g.call(tip);
+
 d3.json('data/data.json').then((data) => {
 	const formattedData = data.map((period) => {
 		return {
@@ -156,6 +167,8 @@ function update(data) {
 		.enter()
 		.append('circle')
 		.attr('fill', (d) => continentColor(d.continent))
+		.on('mouseover', tip.show)
+		.on('mouseout', tip.hide)
 		.merge(circles)
 		.transition(t)
 		.attr('cx', (d) => x(d.income))
