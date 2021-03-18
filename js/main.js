@@ -4,6 +4,8 @@
  *    Project 2 - Gapminder Clone
  */
 
+import data from '../data/data.js';
+
 const MARGIN = { LEFT: 150, RIGHT: 100, TOP: 75, BOTTOM: 100 };
 const WIDTH = 800 - MARGIN.LEFT - MARGIN.RIGHT;
 const HEIGHT = 600 - MARGIN.TOP - MARGIN.BOTTOM;
@@ -107,7 +109,8 @@ continents.forEach((continent, i) => {
 		})
 		.text(continent.charAt(0).toUpperCase() + continent.slice(1))
 		.attr('text-anchor', 'middle')
-		.attr('fill', continentColor(continent));
+		.attr('fill', continentColor(continent))
+		.style('font-size', '1.6rem');
 });
 
 // tooltip
@@ -127,7 +130,6 @@ let formattedData;
 
 // button event listeners
 $('#play-button').on('click', function () {
-	console.log(typeof $(this).text());
 	if ($(this).text() === 'Play' && counter < 214) {
 		interval = setInterval(function () {
 			counter < 214
@@ -156,7 +158,11 @@ $('#reset-button').on('click', () => {
 	update(formattedData[counter]);
 });
 
-d3.json('data/data.json').then((data) => {
+// d3.json('data/data.json').then((data) => {
+// fetch('data/data.json')
+// 	.then((response) => response.json())
+// 	.then((data) => {
+const cleanData = () => {
 	formattedData = data.map((period) => {
 		return {
 			year: period['year'],
@@ -173,19 +179,8 @@ d3.json('data/data.json').then((data) => {
 				}),
 		};
 	});
-
-	// const interval = d3.interval(function () {
-	// 	counter = counter < 214 ? counter + 1 : 0;
-	// 	update(formattedData[counter]);
-	// }, 100);
-
-	// interval = setInterval(function () {
-	// 	counter = counter < 214 ? counter + 1 : 0;
-	// 	update(formattedData[counter]);
-	// }, 100);
-
 	update(formattedData[0]);
-});
+};
 
 function update(data) {
 	const t = d3.transition().duration(100);
@@ -214,3 +209,7 @@ function update(data) {
 	// update time label
 	timeLabel.text(String(data.year));
 }
+
+$(function () {
+	cleanData();
+});

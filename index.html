@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
 		<meta name="description" content="" />
-		<title>Project 2 - Gapminder Clone</title>
+		<title>Data Visualization - Gapminder Clone</title>
+		<!-- FAVICON -->
+		<link rel="apple-touch-icon" sizes="76x76" href="/assets/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+		<meta name="msapplication-TileColor" content="#da532c" />
+		<meta name="theme-color" content="#ffffff" />
+		<!-- Google fonts -->
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:wght@600&display=swap" rel="stylesheet" />
 		<!-- Bootstrap -->
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-			crossorigin="anonymous"
-		/>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 		<!-- Tooltip styling -->
 		<link rel="stylesheet" href="css/d3-tip.css" />
 		<!-- Custom styling -->
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
+
 	<body>
 		<header>
-			<h1>First Data Visualization Project</h1>
-			<h2>Karan Katoch</h2>
+			<ul class="logoMenuBox">
+				<li class="logoBox">
+					<a id="logo" class="logo" href="#home">Katoch</a>
+				</li>
+			</ul>
+			<h1>Data Visualization Project #1</h1>
 		</header>
 		<main>
-			<div class="container">
-				<div class="row">
-					<!-- <div class="col-md-12 box btn-box">
-						<button id="play-button" class="btn btn-dark">Play</button>
-						<button id="reset-button" class="btn btn-dark">Reset</button>
-					</div> -->
-					<div class="visualization-box">
-						<div class="btn-box">
+			<div class="wrapper">
+				<div class="container">
+					<div class="row">
+						<!-- <div class="col-md-12 box btn-box">
 							<button id="play-button" class="btn btn-dark">Play</button>
 							<button id="reset-button" class="btn btn-dark">Reset</button>
+						</div> -->
+						<div class="visualization-box">
+							<div class="btn-box">
+								<button id="play-button" class="btn btn-dark">Play</button>
+								<button id="reset-button" class="btn btn-dark">Reset</button>
+							</div>
+							<div id="chart-area"></div>
 						</div>
-						<div id="chart-area"></div>
 					</div>
 				</div>
 			</div>
 		</main>
 		<!-- External JS libraries -->
 		<script src="https://d3js.org/d3.v5.min.js"></script>
-		<script
-			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-			crossorigin="anonymous"
-		></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<script src="js/d3-tip.js"></script>
 		<!-- Custom JS -->
-		<script src="js/main.js"></script>
+		<script src="js/main.js" type="module"></script>
 	</body>
+
 </html>
